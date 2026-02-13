@@ -116,3 +116,11 @@ body::before {
   font-size: 13px;
   opacity: 0.6;
 }
+/* Lì xì */
+.lixi {
+  position: absolute;
+  width: 90px;
+  cursor: pointer;
+  animation: fall 6s linear forwards;
+  z-index: 6;
+}
