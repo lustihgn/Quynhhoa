@@ -126,3 +126,49 @@ function animate(){
 }
 
 animate();
+// ===========================
+// ===== LÌ XÌ SAU NHẠC =====
+// ===========================
+
+// Danh sách ảnh lì xì
+const lixiImages = [
+  "lixi1.jpg",
+  "lixi2.jpg",
+  "lixi3.jpg",
+  "lixi4.jpg"
+];
+
+// Khi nhạc kết thúc → bắt đầu lì xì
+bgm.onended = () => {
+  if (!localStorage.getItem("lixiDaChon")) {
+    startLiXi();
+  }
+};
+
+function startLiXi(){
+  setInterval(createLiXi, 800);
+}
+
+function createLiXi(){
+  if(localStorage.getItem("lixiDaChon")) return;
+
+  const img = lixiImages[Math.floor(Math.random()*lixiImages.length)];
+
+  const card = document.createElement("img");
+  card.src = img;
+  card.className = "lixi";
+  card.style.left = Math.random()*innerWidth + "px";
+
+  card.onclick = () => {
+    localStorage.setItem("lixiDaChon", img);
+
+    document.querySelectorAll(".lixi").forEach(el => el.remove());
+
+    popupImg.src = img;
+    popupText.innerText = "🧧 Bạn đã nhận lì xì năm nay!";
+    popup.style.display = "flex";
+  };
+
+  document.body.appendChild(card);
+  setTimeout(()=>card.remove(),6000);
+}
