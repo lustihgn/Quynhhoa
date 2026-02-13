@@ -127,10 +127,9 @@ function animate(){
 
 animate();
 // ===========================
-// ===== LÌ XÌ SAU NHẠC =====
+// ===== LÌ XÌ ỔN ĐỊNH =====
 // ===========================
 
-// Danh sách ảnh lì xì
 const lixiImages = [
   "lixi1.jpg",
   "lixi2.jpg",
@@ -138,19 +137,19 @@ const lixiImages = [
   "lixi4.jpg"
 ];
 
-// Khi nhạc kết thúc → bắt đầu lì xì
-bgm.onended = () => {
+let lixiRunning = false;
+
+// Khi nhạc kết thúc
+bgm.addEventListener("ended", () => {
   if (!localStorage.getItem("lixiDaChon")) {
-    startLiXi();
+    lixiRunning = true;
+    dropLiXi();
   }
-};
+});
 
-function startLiXi(){
-  setInterval(createLiXi, 800);
-}
-
-function createLiXi(){
-  if(localStorage.getItem("lixiDaChon")) return;
+function dropLiXi(){
+  if (!lixiRunning) return;
+  if (localStorage.getItem("lixiDaChon")) return;
 
   const img = lixiImages[Math.floor(Math.random()*lixiImages.length)];
 
@@ -161,6 +160,7 @@ function createLiXi(){
 
   card.onclick = () => {
     localStorage.setItem("lixiDaChon", img);
+    lixiRunning = false;
 
     document.querySelectorAll(".lixi").forEach(el => el.remove());
 
@@ -170,5 +170,10 @@ function createLiXi(){
   };
 
   document.body.appendChild(card);
-  setTimeout(()=>card.remove(),6000);
+
+  setTimeout(() => card.remove(), 6000);
+
+  // rơi tiếp sau 900ms
+  setTimeout(dropLiXi, 900);
 }
+
