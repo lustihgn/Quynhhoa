@@ -14,13 +14,13 @@ const tetItems = ["🎆", "✨", "🎇", "🌟"];
 
 /* 🔥 ĐÃ NÂNG LÊN 7 ẢNH */
 const cards = [
-  { img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80", text: "Chúc năm mới phát tài!" },
-  { img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80", text: "Gia đình hạnh phúc!" },
-  { img: "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=600&q=80", text: "Xuân an khang!" },
-  { img: "https://images.unsplash.com/photo-1606788075765-42fbeae5a0b7?auto=format&fit=crop&w=600&q=80", text: "Vạn sự như ý!" },
-  { img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80", text: "Sức khỏe dồi dào!" },
-  { img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", text: "Thành công rực rỡ!" },
-  { img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=600&q=80", text: "Niềm vui tràn đầy!" }
+  { img: "anh1.jdg", text: "Chúc năm mới phát tài!" },
+  { img: "anh2.jdg", text: "Gia đình hạnh phúc!" },
+  { img: "anh3.jdg", text: "Xuân an khang!" },
+  { img: "anh4.jdg", text: "Vạn sự như ý!" },
+  { img: "anh5.jdg", text: "Sức khỏe dồi dào!" },
+  { img: "anh6.jdg", text: "Thành công rực rỡ!" },
+  { img: "anh7.jdg", text: "Niềm vui tràn đầy!" }
 ];
 
 let lastIndex = -1;
