@@ -1,14 +1,9 @@
-// ============================
-// ===== NHẠC CHẠY 2 LẦN =====
-// ============================
-
+// ===== NHẠC TỰ CHẠY KHI CLICK =====
 const bgm = document.getElementById("bgm");
-let playCount = 0;
 
-// Click lần đầu để chạy nhạc
 function startMusic() {
   bgm.volume = 0.5;
-  bgm.play().catch(()=>{});
+  bgm.play().catch(() => {});
   document.removeEventListener("click", startMusic);
   document.removeEventListener("touchstart", startMusic);
 }
@@ -16,26 +11,8 @@ function startMusic() {
 document.addEventListener("click", startMusic);
 document.addEventListener("touchstart", startMusic);
 
-// Khi nhạc kết thúc
-bgm.onended = () => {
-  playCount++;
 
-  if (playCount < 2) {
-    bgm.currentTime = 0;
-    bgm.play();
-  } else {
-    // Sau khi chạy đủ 2 lần → bắt đầu lì xì
-    if (!localStorage.getItem("lixiDaChon")) {
-      startLiXi();
-    }
-  }
-};
-
-
-// ===================================
-// ===== PHẦN SAO RƠI (GIỮ NGUYÊN) ====
-// ===================================
-
+// ===== POPUP + VẬT RƠI =====
 const tetItems = ["🎆","✨","🎇","🌟"];
 
 const cards = [
@@ -72,55 +49,80 @@ function createTetItem() {
     popupText.innerText = cards[i].text;
     popup.style.display = "flex";
 
-    setTimeout(()=>popupImg.classList.add("show"),50);
+    setTimeout(() => popupImg.classList.add("show"), 50);
   };
 
   document.body.appendChild(item);
-  setTimeout(()=>item.remove(),13000);
+  setTimeout(() => item.remove(), 13000);
 }
 
-setInterval(createTetItem,1000);
-popup.onclick = () => popup.style.display="none";
+setInterval(createTetItem, 1000);
+popup.onclick = () => popup.style.display = "none";
 
 
-// ===========================
-// ===== LÌ XÌ RƠI SAU ======
-// ===========================
+// ===== PHÁO HOA =====
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
 
-const lixiImages = [
-  "lixi1.jpg",
-  "lixi2.jpg",
-  "lixi3.jpg",
-  "lixi4.jpg"
-];
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
 
-function startLiXi(){
-  setInterval(createLiXi,800);
+class Firework {
+  constructor() {
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height*0.6;
+    this.particles = [];
+    this.color = `hsla(${Math.random()*360},80%,65%,0.8)`;
+
+    for(let i=0;i<20;i++){
+      this.particles.push({
+        x:this.x,
+        y:this.y,
+        a:Math.random()*Math.PI*2,
+        s:Math.random()*1.5+0.5,
+        l:60
+      });
+    }
+  }
+
+  update(){
+    this.particles.forEach(p=>{
+      p.x+=Math.cos(p.a)*p.s;
+      p.y+=Math.sin(p.a)*p.s;
+      p.l--;
+    });
+    this.particles=this.particles.filter(p=>p.l>0);
+  }
+
+  draw(){
+    this.particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,1.5,0,Math.PI*2);
+      ctx.fillStyle=this.color;
+      ctx.fill();
+    });
+  }
 }
 
-function createLiXi(){
-  if(localStorage.getItem("lixiDaChon")) return;
+let fireworks = [];
 
-  const randomIndex = Math.floor(Math.random()*lixiImages.length);
-  const imgName = lixiImages[randomIndex];
+function animate(){
+  ctx.fillStyle="rgba(0,0,20,0.2)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  const card = document.createElement("img");
-  card.src = imgName;
-  card.className = "lixi";
-  card.style.left = Math.random()*innerWidth + "px";
+  if(Math.random()<0.04) fireworks.push(new Firework());
 
-  card.onclick = () => {
-    localStorage.setItem("lixiDaChon", imgName);
-    document.querySelectorAll(".lixi").forEach(el=>el.remove());
-    showLiXi(imgName);
-  };
+  fireworks.forEach((f,i)=>{
+    f.update();
+    f.draw();
+    if(!f.particles.length) fireworks.splice(i,1);
+  });
 
-  document.body.appendChild(card);
-  setTimeout(()=>card.remove(),6000);
+  requestAnimationFrame(animate);
 }
 
-function showLiXi(img){
-  popupImg.src = img;
-  popupText.innerText = "🧧 Bạn đã nhận lì xì năm nay!";
-  popup.style.display = "flex";
-}
+animate();
