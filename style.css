@@ -5,7 +5,7 @@ body {
   background: radial-gradient(circle at center, #0d1b2a 0%, #0a192f 50%, #000814 100%);
 }
 
-/* Pháo hoa */
+/* Canvas pháo hoa */
 #fireworks {
   position: fixed;
   inset: 0;
@@ -13,12 +13,25 @@ body {
   pointer-events: none;
 }
 
+/* Nền sao */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 60%, white, transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, white, transparent),
+    radial-gradient(1.5px 1.5px at 85% 20%, white, transparent);
+  opacity: 0.6;
+}
+
 .year {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 120px;
+  font-size: 130px;
   font-weight: bold;
   color: white;
   opacity: 0.08;
@@ -30,40 +43,36 @@ body {
   top: 40px;
   width: 100%;
   text-align: center;
-  font-size: 38px;
+  font-size: 42px;
   color: white;
   text-shadow: 0 0 20px white, 0 0 40px #4cc9f0;
+  animation: glow 2s infinite alternate;
   z-index: 2;
 }
 
-/* Sao rơi */
-.star {
+@keyframes glow {
+  from { text-shadow: 0 0 15px #4cc9f0; }
+  to { text-shadow: 0 0 40px white; }
+}
+
+.flower {
   position: absolute;
-  font-size: 30px;
+  font-size: 34px;
+  cursor: pointer;
   animation: fall linear forwards;
   z-index: 3;
-  will-change: transform;
 }
 
 @keyframes fall {
-  from { transform: translateY(-80px) rotate(0); }
+  from { transform: translateY(-60px) rotate(0); }
   to { transform: translateY(110vh) rotate(360deg); }
-}
-
-/* Lì xì */
-.lixi {
-  position: absolute;
-  width: 90px;
-  animation: fall 6s linear forwards;
-  cursor: pointer;
-  z-index: 6;
 }
 
 /* Popup */
 .popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.75);
   display: none;
   justify-content: center;
   align-items: center;
@@ -71,14 +80,32 @@ body {
 }
 
 .popup-content {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 300px;
+  background: linear-gradient(#fff, #dbeafe);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 340px;
   text-align: center;
 }
 
 .popup-content img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.popup-content img.show {
+  opacity: 1;
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
 }
