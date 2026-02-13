@@ -13,7 +13,7 @@ body {
   pointer-events: none;
 }
 
-/* Nền sao */
+/* Nền sao tĩnh */
 body::before {
   content: "";
   position: fixed;
@@ -24,6 +24,7 @@ body::before {
     radial-gradient(1.5px 1.5px at 40% 80%, white, transparent),
     radial-gradient(1.5px 1.5px at 85% 20%, white, transparent);
   opacity: 0.6;
+  z-index: 0;
 }
 
 .year {
@@ -55,16 +56,16 @@ body::before {
   to { text-shadow: 0 0 40px white; }
 }
 
-.flower {
+/* ⭐ Sao rơi */
+.star {
   position: absolute;
-  font-size: 34px;
   cursor: pointer;
   animation: fall linear forwards;
-  z-index: 3;
+  z-index: 5;
 }
 
 @keyframes fall {
-  from { transform: translateY(-60px) rotate(0); }
+  from { transform: translateY(-60px) rotate(0deg); }
   to { transform: translateY(110vh) rotate(360deg); }
 }
 
@@ -90,10 +91,4 @@ body::before {
 .popup-content img {
   width: 100%;
   border-radius: 15px;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-.popup-content img.show {
-  opacity: 1;
 }
