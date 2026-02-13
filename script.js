@@ -18,7 +18,7 @@ const tetItems = ["🎆","✨","🎇","🌟"];
 const cards = [
   { img:"anh1.jpg", text:"Mong năm mới chị sẽ có thêm thật nhiều niềm vui!" },
   { img:"anh2.jpg", text:"Chúc chị sang năm mới ngày càng xinh đẹp hơn cả" },
-  { img:"anh3.jpg", text"Năm mới mong chị luôn bình an và nhẹ lòng" },
+  { img:"anh3.jpg", text:"Năm mới mong chị luôn bình an và nhẹ lòng" },
   { img:"anh4.jpg", text:"Chúc chị có một năm thật thuận lợi trong mọi việc mình làm" },
   { img:"anh5.jpg", text:"Mong chị sẽ có thật nhiều may mắn đến với mình" },
   { img:"anh6.jpg", text:"Chúc chị luôn được yêu thương và được trân trọng" },
