@@ -25,7 +25,7 @@ const cards = [
   { img:"anh7.jpg", text:"💜Mong cho chị có một năm thật thuận lợi và hạnh phúc 💜" }
 ];
 
-// preload ảnh để hiện ngay
+// preload ảnh
 cards.forEach(card => {
   const img = new Image();
   img.src = card.img;
@@ -47,13 +47,11 @@ function createStar() {
   star.style.animationDuration = (6 + Math.random()*4) + "s";
 
   star.onclick = () => {
-
     popupImg.src = cards[currentIndex].img;
     popupText.innerText = cards[currentIndex].text;
     popup.style.display = "flex";
 
     currentIndex++;
-
     if(currentIndex >= cards.length){
       currentIndex = 0;
     }
@@ -136,4 +134,3 @@ function animate(){
 }
 
 animate();
-
