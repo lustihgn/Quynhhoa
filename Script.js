@@ -14,13 +14,13 @@ const tetItems = ["🎆", "✨", "🎇", "🌟"];
 
 /* 🔥 ĐÃ NÂNG LÊN 7 ẢNH */
 const cards = [
-  { img: "anh1.jdg", text: "Chúc năm mới phát tài!" },
-  { img: "anh2.jdg", text: "Gia đình hạnh phúc!" },
-  { img: "anh3.jdg", text: "Xuân an khang!" },
-  { img: "anh4.jdg", text: "Vạn sự như ý!" },
-  { img: "anh5.jdg", text: "Sức khỏe dồi dào!" },
-  { img: "anh6.jdg", text: "Thành công rực rỡ!" },
-  { img: "anh7.jdg", text: "Niềm vui tràn đầy!" }
+  { img: "anh1.jpg", text: "Chúc năm mới phát tài!" },
+  { img: "anh2.jpg", text: "Gia đình hạnh phúc!" },
+  { img: "anh3.jpg", text: "Xuân an khang!" },
+  { img: "anh4.jpg", text: "Vạn sự như ý!" },
+  { img: "anh5.jpg", text: "Sức khỏe dồi dào!" },
+  { img: "anh6.jpg", text: "Thành công rực rỡ!" },
+  { img: "anh7.jpg", text: "Niềm vui tràn đầy!" }
 ];
 
 let lastIndex = -1;
