@@ -1,15 +1,15 @@
-// ===== NHẠC =====
+// ===== NHẠC TỰ CHẠY KHI CLICK =====
 const bgm = document.getElementById("bgm");
 
-function playMusic() {
+function startMusic() {
   bgm.volume = 0.5;
   bgm.play().catch(() => {});
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
 }
 
-// Tự phát khi người dùng click lần đầu
-document.addEventListener("click", () => {
-  bgm.play().catch(() => {});
-}, { once: true });
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
 
 
 // ===== POPUP + VẬT RƠI =====
@@ -57,7 +57,6 @@ function createTetItem() {
 }
 
 setInterval(createTetItem, 1000);
-
 popup.onclick = () => popup.style.display = "none";
 
 
@@ -115,7 +114,7 @@ function animate(){
   ctx.fillStyle="rgba(0,0,20,0.2)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  if(Math.random()<0.03) fireworks.push(new Firework());
+  if(Math.random()<0.04) fireworks.push(new Firework());
 
   fireworks.forEach((f,i)=>{
     f.update();
