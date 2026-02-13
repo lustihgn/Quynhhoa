@@ -9,13 +9,13 @@ document.addEventListener("click", startMusic);
 
 // ===== DATA =====
 const cards = [
-  { img:"anh1.jpg", text:"Chúc năm mới phát tài!" },
-  { img:"anh2.jpg", text:"Gia đình hạnh phúc!" },
-  { img:"anh3.jpg", text:"Xuân an khang!" },
-  { img:"anh4.jpg", text:"Vạn sự như ý!" },
-  { img:"anh5.jpg", text:"Sức khỏe dồi dào!" },
-  { img:"anh6.jpg", text:"Thành công rực rỡ!" },
-  { img:"anh7.jpg", text:"Niềm vui tràn đầy!" }
+  { img:"anh1.jpg", text:"Chúc chị có một năm nhẹ nhàng và ít phải lo nghĩ" },
+  { img:"anh2.jpg", text:"Mong năm mới chị sẽ có thêm thật nhiều niềm vui" },
+  { img:"anh3.jpg", text:"Chúc chị sang năm mới ngày càng xinh đẹp hơn cả" },
+  { img:"anh4.jpg", text:"Mong chị sẽ có thật nhiều may mắn đến với mình" },
+  { img:"anh5.jpg", text:"Chúc chị có một năm thật thuận lợi trong mọi việc mình làm" },
+  { img:"anh6.jpg", text:"Chúc chị luôn được yêu thương và được trân trọng" },
+  { img:"anh7.jpg", text:"Năm mới mong chị luôn bình an và nhẹ lòng" }
 ];
 
 const starTypes = ["⭐","🌟","✨","✦","✧"];
