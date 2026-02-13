@@ -16,22 +16,22 @@ document.addEventListener("touchstart", startMusic);
 const stars = ["⭐","🌟","✨","💫","🌠","✦","✧"];
 
 const cards = [
-  { img:"anh1.jpg", text:"Chúc năm mới phát tài!" },
-  { img:"anh2.jpg", text:"Gia đình hạnh phúc!" },
-  { img:"anh3.jpg", text:"Xuân an khang!" },
-  { img:"anh4.jpg", text:"Vạn sự như ý!" },
-  { img:"anh5.jpg", text:"Sức khỏe dồi dào!" },
-  { img:"anh6.jpg", text:"Thành công rực rỡ!" },
-  { img:"anh7.jpg", text:"Niềm vui tràn đầy!" }
+  { img:"anh1.jpg", text:"💛Chúc chin gái năm mới sẽ có thêm thật là nhiều niềm vui 💛" },
+  { img:"anh2.jpg", text:"❤️‍🩹Năm mới mong chị sẽ luôn được bình an và nhẹ lòng❤️‍🩹" },
+  { img:"anh3.jpg", text:"😍Chúc chị sang năm mới sẽ ngày càng xinh đẹp hơn cả 😍" },
+  { img:"anh4.jpg", text:"🍀Mong rằng sang năm mới sẽ có thật nhiều sự may mắn và tốt đẹp tới với chị🍀" },
+  { img:"anh5.jpg", text:"💕Mong chị sẽ luôn nhận được sự yêu thương và trân trọng 💕" },
+  { img:"anh6.jpg", text:"☁️Chúc cho chị có một năm nhẹ nhàng và ít phải lo nghĩ nhe ☁️" },
+  { img:"anh7.jpg", text:"💜Mong cho chị có một năm thật thuận lợi và hạnh phúc 💜" }
 ];
 
-// preload ảnh (hiện ngay, không lag)
+// preload ảnh để hiện ngay
 cards.forEach(card => {
   const img = new Image();
   img.src = card.img;
 });
 
-let lastIndex = -1;
+let currentIndex = 0;
 
 const popup = document.getElementById("popup");
 const popupImg = document.getElementById("popup-img");
@@ -47,16 +47,16 @@ function createStar() {
   star.style.animationDuration = (6 + Math.random()*4) + "s";
 
   star.onclick = () => {
-    let i;
-    do {
-      i = Math.floor(Math.random()*cards.length);
-    } while (i === lastIndex);
 
-    lastIndex = i;
-
-    popupImg.src = cards[i].img;
-    popupText.innerText = cards[i].text;
+    popupImg.src = cards[currentIndex].img;
+    popupText.innerText = cards[currentIndex].text;
     popup.style.display = "flex";
+
+    currentIndex++;
+
+    if(currentIndex >= cards.length){
+      currentIndex = 0;
+    }
   };
 
   document.body.appendChild(star);
@@ -64,6 +64,10 @@ function createStar() {
 }
 
 setInterval(createStar, 700);
+
+popup.onclick = () => {
+  popup.style.display = "none";
+};
 
 
 // ===== PHÁO HOA =====
@@ -133,6 +137,3 @@ function animate(){
 
 animate();
 
-popup.onclick = () => {
-  popup.style.display = "none";
-};
